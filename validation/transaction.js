@@ -18,7 +18,7 @@ module.exports = function validateTransactionInput(data) {
     errors.value = "Value is required";
   }
   
-  if (Validator.isDecimal(data.value.toString())) {
+  if (!Validator.isDecimal(data.value.toString())) {
     errors.value = "Value needs to be a decimal number";
   }
 
