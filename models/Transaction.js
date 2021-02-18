@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const SchemaTypes = mongoose.Schema.Types;
 
 const TransactionSchema = new Schema({
     accountId: {
@@ -20,13 +19,13 @@ const TransactionSchema = new Schema({
         required: true
     },
     value: {
-        type: SchemaTypes.Double,
+        type: Number,
         required: true
     },
-    type: {
+    choice: {
         type: String,
         required: true
-    },
+    }
 });
 
 module.exports = Tweet = mongoose.model('tweet', TransactionSchema);

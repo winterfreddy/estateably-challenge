@@ -22,8 +22,8 @@ module.exports = function validateTransactionInput(data) {
     errors.value = "Value needs to be a decimal number";
   }
 
-  if (Validator.isEmpty(data.type)) {
-    errors.type = "Type is required";
+  if (Validator.isEmpty(data.choice)) {
+    errors.choice = "Deposit/withdraw choice is required";
   }
 
   return {
