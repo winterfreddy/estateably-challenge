@@ -38,7 +38,7 @@ class SignupForm extends React.Component {
         };
 
         this.props.signup(user, this.props.history)
-            .then(() => this.props.history.push('/home'));; 
+            .then(() => this.props.history.push('/profile'));; 
     }
 
     renderErrors() {
@@ -64,18 +64,23 @@ class SignupForm extends React.Component {
                         value={this.state.username}
                         onChange={this.update('username')}
                         placeholder="Username"
+                        required={true}
                     />
                     <br/>
                     <input type="password"
                         value={this.state.password}
                         onChange={this.update('password')}
                         placeholder="Password"
+                        required={true}
+                        minLength="6"
                     />
                     <br/>
                     <input type="password"
                         value={this.state.password2}
                         onChange={this.update('password2')}
                         placeholder="Confirm Password"
+                        required={true}
+                        minLength="6"
                     />
                     <br/>
                     <input type="submit" value="Submit" />

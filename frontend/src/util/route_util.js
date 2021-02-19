@@ -10,8 +10,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
         !loggedIn ? (
         <Component {...props} />
         ) : (
-        // Redirect to transaction page with associated accountId TODO
-        <Redirect to="/transactions" />
+        <Redirect to="/profile" />
         )
     )}
   />

@@ -28,4 +28,4 @@ const TransactionSchema = new Schema({
     }
 });
 
-module.exports = Tweet = mongoose.model('tweet', TransactionSchema);
+module.exports = Transaction = mongoose.model('transaction', TransactionSchema);

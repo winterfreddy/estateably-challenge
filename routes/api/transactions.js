@@ -7,14 +7,6 @@ const validateTransactionInput = require('../../validation/transaction');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the transactions route" }));
 
-// temporary path to grab all transactions from all users
-router.get('/', (req, res) => {
-    Transaction.find()
-        .sort({ date: -1 })
-        .then(transactions => res.json(transactions))
-        .catch(err => res.status(404).json({ notransactionsfound: 'No transactions found' }));
-});
-
 // grab all transactions belonging to that user
 router.get('/user/:accountId', (req, res) => {
     Transaction.find({accountId: req.params.accountId})
