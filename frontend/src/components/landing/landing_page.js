@@ -1,13 +1,17 @@
 import React from 'react';
+import '../../stylesheets/landing.css';
 
 class LandingPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Estateably Banking</h1>
+      <div className="landing-container">
+        <div className="landing-content">
+          <p className="landing-title">The Future of Estateably Banking</p>
+          <label className="landing-text">Estateably Banking is a web-based platform that empowers professionals with technology that digitizes their wallet.</label>
+        </div>
         <footer>
-          Copyright &copy; 2021 Estateably Banking
+          2021 &copy; Estateably Banking
         </footer>
       </div>
     );
