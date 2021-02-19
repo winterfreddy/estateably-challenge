@@ -17,6 +17,27 @@ router.get('/user/:accountId', (req, res) => {
     );
 });
 
+// grab all transactions belonging to that user and matches category
+router.get('/user/:accountId/:category', (req, res) => {
+    if(req.params.category === "All") {
+        Transaction.find({accountId: req.params.accountId})
+            .then(transactions => res.json(transactions))
+            .catch(err =>
+                res.status(404).json({ notransactionsfound: 'No transactions found from that user' }
+            )
+        );
+    }
+    else {
+        Transaction.find({accountId: req.params.accountId, category: req.params.category})
+            .then(transactions => res.json(transactions))
+            .catch(err =>
+                res.status(404).json({ notransactionsfound: `No transactions matching ${req.params.category} found from that user` }
+            )
+        );
+    }
+
+});
+
 router.post('/',
     passport.authenticate('jwt', { session: false }),
         (req, res) => {
