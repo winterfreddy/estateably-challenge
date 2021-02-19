@@ -26,10 +26,10 @@ class Profile extends React.Component {
                 <div>
                     <TransactionFilterSearch
                         id={this.props.currentUser.id}
-                        fetchCategoryTransactions={this.props.fetchCategoryTransactions}
+                        searchTransactions={this.props.searchTransactions}
                     />
                     <TransactionCompose addTransaction={this.props.addTransaction}/>
-                    <div>This user has no Transactions</div>
+                    <div>There are no transactions</div>
                 </div>
             )
         } else {
@@ -37,7 +37,7 @@ class Profile extends React.Component {
                 <div>
                     <TransactionFilterSearch
                         id={this.props.currentUser.id}
-                        fetchCategoryTransactions={this.props.fetchCategoryTransactions}
+                        searchTransactions={this.props.searchTransactions}
                     />
                     <TransactionCompose addTransaction={this.props.addTransaction}/>
                     {this.state.transactions.map(transaction => (

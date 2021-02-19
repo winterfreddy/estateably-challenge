@@ -10,7 +10,6 @@ class TransactionFilterSearch extends React.Component {
         }
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleFilter = this.handleFilter.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
     }
 
@@ -19,13 +18,16 @@ class TransactionFilterSearch extends React.Component {
         this.setState({ [name]: value })
     }
 
-    handleFilter() {
-        let data = [this.props.id, this.state.category]
-        this.props.fetchCategoryTransactions(data);
-    }
-
-    handleSearch() {
-
+    handleSearch(command) {
+        let data;
+        if(command === 'filter') {
+            data = [this.props.id, this.state.category];
+        }
+        else {
+            data = [this.props.id, this.state.description];
+            this.setState({description: ''});
+        }
+        this.props.searchTransactions(data);
     }
 
     render() {
@@ -44,7 +46,7 @@ class TransactionFilterSearch extends React.Component {
                     <option value="House">House</option>
                     <option value="Other">Other</option>
                 </select>
-                <button onClick={this.handleFilter}>Filter</button>
+                <button onClick={() => this.handleSearch('filter')}>Filter</button>
                 <input
                     type="textarea"
                     name="description"
@@ -52,7 +54,7 @@ class TransactionFilterSearch extends React.Component {
                     onChange={this.handleChange}
                     placeholder="Enter transaction description or value"
                 />
-                <button onClick={this.handleSearch}>Search</button>
+                <button onClick={() => this.handleSearch('search')}>Search</button>
             </div>
         )
     }

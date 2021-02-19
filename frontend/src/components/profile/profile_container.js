@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addTransaction, fetchUserTransactions, fetchCategoryTransactions } from '../../actions/transaction_actions';
+import { addTransaction, fetchUserTransactions, searchTransactions } from '../../actions/transaction_actions';
 import Profile from './profile';
 
 const mapStateToProps = (state) => {
@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchUserTransactions: id => dispatch(fetchUserTransactions(id)),
     addTransaction: data => dispatch(addTransaction(data)),
-    fetchCategoryTransactions: data => dispatch(fetchCategoryTransactions(data))
+    searchTransactions: data => dispatch(searchTransactions(data))
   };
 };
 

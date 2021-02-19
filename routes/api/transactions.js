@@ -17,9 +17,21 @@ router.get('/user/:accountId', (req, res) => {
     );
 });
 
-// grab all transactions belonging to that user and matches category
-router.get('/user/:accountId/:category', (req, res) => {
-    if(req.params.category === "All") {
+// grab all transactions belonging to that user and matches category, description, or value
+router.get('/user/:accountId/:description', (req, res) => {
+    let amount = +(req.params.description);
+    let categories = ['Salary','Food','Transport','House','Other'];
+    // checks if its a value
+    if(!isNaN(amount)) {
+        Transaction.find({accountId: req.params.accountId, value: { $eq: amount}})
+            .then(transactions => res.json(transactions))
+            .catch(err =>
+                res.status(404).json({ notransactionsfound: `No transactions matching ${req.params.value} found from that user` }
+            )
+        );
+    }
+    // checks if category is set to "All"
+    else if(req.params.description === "All") {
         Transaction.find({accountId: req.params.accountId})
             .then(transactions => res.json(transactions))
             .catch(err =>
@@ -27,15 +39,24 @@ router.get('/user/:accountId/:category', (req, res) => {
             )
         );
     }
-    else {
-        Transaction.find({accountId: req.params.accountId, category: req.params.category})
+    // checks if description matches one of the categories
+    else if(categories.includes(req.params.description)){
+        Transaction.find({accountId: req.params.accountId, category: req.params.description})
             .then(transactions => res.json(transactions))
             .catch(err =>
-                res.status(404).json({ notransactionsfound: `No transactions matching ${req.params.category} found from that user` }
+                res.status(404).json({ notransactionsfound: `No transactions matching ${req.params.description} found from that user` }
             )
         );
     }
-
+    // and checks for any matching description
+    else {
+        Transaction.find({accountId: req.params.accountId, description: req.params.description})
+            .then(transactions => res.json(transactions))
+            .catch(err =>
+                res.status(404).json({ notransactionsfound: `No transactions matching ${req.params.description} found from that user` }
+            )
+        );
+    }
 });
 
 router.post('/',

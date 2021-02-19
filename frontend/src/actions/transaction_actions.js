@@ -1,4 +1,7 @@
-import { getUserTransactions, getCategoryTransactions, writeTransaction } from '../util/transaction_api_util';
+import {
+    getUserTransactions,
+    getSearchTransactions,
+    writeTransaction } from '../util/transaction_api_util';
 
 export const RECEIVE_USER_TRANSACTIONS = "RECEIVE_USER_TRANSACTIONS";
 export const RECEIVE_NEW_TRANSACTION = "RECEIVE_NEW_TRANSACTION";
@@ -19,11 +22,11 @@ export const fetchUserTransactions = id => dispatch => (
     .catch(err => console.log(err))
 );
 
-export const fetchCategoryTransactions = data => dispatch => (
-    getCategoryTransactions(data)
+export const searchTransactions = data => dispatch => (
+    getSearchTransactions(data)
         .then(transactions => dispatch(receiveUserTransactions(transactions)))
         .catch(err => console.log(err))
-);
+)
 
 export const addTransaction = data => dispatch => (
   writeTransaction(data)
