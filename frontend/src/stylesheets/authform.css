@@ -1,4 +1,5 @@
-.signup-form-container {
+.signup-form-container,
+.login-form-container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -6,7 +7,8 @@
     margin-top: 15%;
 }
 
-.signup-form-content {
+.signup-form-content,
+.login-form-content {
     display: flex;
     flex-direction: column;
     padding: 84px 50px;
@@ -15,17 +17,20 @@
     border-radius: 5px 0 0 5px;
 }
 
-.signup-form-content-title {
+.signup-form-content-title,
+.login-form-content-title {
     font-size: 30px;
     font-weight: 600;
     margin-top: 0;
 }
 
-.signup-form-content-text {
+.signup-form-content-text,
+.login-form-content-text {
     margin-top: 0;
 }
 
-.signup-form-content-text-1 {
+.signup-form-content-text-1,
+.login-form-content-text-1 {
     font-weight: 600;
 }
 
@@ -35,7 +40,8 @@
     font-weight: 600;
 }
 
-.signup-form-panel {
+.signup-form-panel,
+.login-form-panel {
     padding: 21.5px 55px;
     border-top: 1px solid gray;
     border-right: 1px solid gray;
@@ -43,13 +49,19 @@
     border-radius: 0 5px 5px 0;
 }
 
-.signup-form-panel-box {
+.login-form-panel {
+    padding: 50.5px 55px;
+}
+
+.signup-form-panel-box,
+.login-form-panel-box {
     display: flex;
     flex-direction: column;
     padding: 5px 0;
 }
 
-.signup-form-panel-box > label {
+.signup-form-panel-box > label,
+.login-form-panel-box > label {
     padding: 5px 0;
     font-size: 15px;
 }

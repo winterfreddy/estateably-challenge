@@ -1,5 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import '../../stylesheets/authform.css';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -53,25 +54,37 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="login-form-container">
+        <div className="login-form-content">
+          <p className="login-form-content-title">Estateably Banking</p>
+          <p className="login-form-content-text-1">Welcome!</p>
+          <p className="login-form-content-text">Please log in</p>
           <div>
+              <label className="login-form-content-text-1">New user? </label><Link className="redirect-link" to={'/signup'}>Sign up here</Link>
+          </div>
+        </div>
+        <form onSubmit={this.handleSubmit}>
+          <div className="login-form-panel">
+            <div className="login-form-panel-box">
+              <label>Username</label>
               <input type="text"
+                className="input-textbox"
                 value={this.state.username}
                 onChange={this.update('username')}
-                placeholder="Username"
                 required={true}
               />
-            <br/>
+            </div>
+            <div className="login-form-panel-box">
+              <label>Password</label>
               <input type="password"
+                className="input-textbox"
                 value={this.state.password}
                 onChange={this.update('password')}
-                placeholder="Password"
                 required={true}
                 minLength="6"
               />
-            <br/>
-            <input type="submit" value="Submit" />
+            </div>
+            <input type="submit" value="Submit" className="submit-btn"/>
             {this.renderErrors()}
           </div>
         </form>
