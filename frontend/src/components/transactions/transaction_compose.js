@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../stylesheets/transaction.css';
 
 class TransactionCompose extends React.Component {
   constructor(props) {
@@ -48,57 +49,72 @@ class TransactionCompose extends React.Component {
 
   render() {
     return (
-        <div>
-            <form onSubmit={this.handleSubmit}>
-                <div>
-                    <label>Category:</label>
-                    <select 
-                        name="category"
-                        value={this.state.category}
-                        onChange={this.handleChange}
-                    >
-                        <option value="Salary">Salary</option>
-                        <option value="Food">Food</option>
-                        <option value="Transport">Transport</option>
-                        <option value="House">House</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <input
-                        type="textarea"
-                        name="description"
-                        value={this.state.description}
-                        onChange={this.handleChange}
-                        placeholder="Transaction description"
-                    />
-                    <label>
-                        <input 
-                            type="radio" 
-                            name="choice"
-                            value="deposit"
-                            checked={this.state.choice === "deposit"}
+            <form
+                className="transaction-compose-header"
+                onSubmit={this.handleSubmit}>
+                <label className="compose-header-title">Add Transaction</label>
+                <div className="compose-header">
+                    <div>
+                        <label>Category: </label>
+                        <select
+                            className="filter-choice"
+                            name="category"
+                            value={this.state.category}
                             onChange={this.handleChange}
-                        /> Deposit
-                    </label>
-                    <br />
-                    <label>
-                        <input 
-                            type="radio" 
-                            name="choice"
-                            value="withdraw"
-                            checked={this.state.choice === "withdraw"}
+                        >
+                            <option value="Salary">Salary</option>
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="House">House</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Description: </label>
+                        <input
+                            className="search-choice"
+                            type="textarea"
+                            name="description"
+                            value={this.state.description}
                             onChange={this.handleChange}
-                        /> Withdraw
-                    </label>
-                    <input
-                        type="text"
-                        name="value"
-                        value={this.state.value}
-                        onChange={this.handleChange}/>
-                    <input type="submit" value="Submit" />
+                            placeholder="Transaction description"
+                        />
+                    </div>
+                </div>
+                <div className="compose-header">
+                    <div>
+                        <label>Type: </label>
+                        <label>
+                            <input 
+                                type="radio" 
+                                name="choice"
+                                value="deposit"
+                                checked={this.state.choice === "deposit"}
+                                onChange={this.handleChange}
+                            /> Deposit
+                        </label>
+                        <label>
+                            <input 
+                                type="radio" 
+                                name="choice"
+                                value="withdraw"
+                                checked={this.state.choice === "withdraw"}
+                                onChange={this.handleChange}
+                            /> Withdraw
+                        </label>
+                    </div>
+                    <div>
+                        <label>Value: </label>
+                        <input
+                            className="search-choice"
+                            type="text"
+                            name="value"
+                            value={this.state.value}
+                            onChange={this.handleChange}/>
+                        <input className="transaction-add-btn" type="submit" value="Submit" />
+                    </div>
                 </div>
             </form>
-            <br />
-        </div>
     )
   }
 }
