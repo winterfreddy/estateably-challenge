@@ -1,5 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import '../../stylesheets/authform.css';
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -57,33 +58,46 @@ class SignupForm extends React.Component {
     render() {
         return (
         <div className="signup-form-container">
+            <div className="signup-form-content">
+                <p className="signup-form-content-title">Estateably Banking</p>
+                <p className="signup-form-content-text-1">Welcome!</p>
+                <p className="signup-form-content-text">Please sign up here</p>
+                <div>
+                    <label className="signup-form-content-text-1">Returning user? </label><Link className="redirect-link" to={'/login'}>Log in here</Link>
+                </div>
+            </div>
             <form onSubmit={this.handleSubmit}>
-                <div className="signup-form">
-                    <br/>
-                    <input type="text"
-                        value={this.state.username}
-                        onChange={this.update('username')}
-                        placeholder="Username"
-                        required={true}
-                    />
-                    <br/>
-                    <input type="password"
-                        value={this.state.password}
-                        onChange={this.update('password')}
-                        placeholder="Password"
-                        required={true}
-                        minLength="6"
-                    />
-                    <br/>
-                    <input type="password"
-                        value={this.state.password2}
-                        onChange={this.update('password2')}
-                        placeholder="Confirm Password"
-                        required={true}
-                        minLength="6"
-                    />
-                    <br/>
-                    <input type="submit" value="Submit" />
+                <div className="signup-form-panel">
+                    <div className="signup-form-panel-box">
+                        <label>Username</label>
+                        <input type="text"
+                            className="input-textbox"
+                            value={this.state.username}
+                            onChange={this.update('username')}
+                            required={true}
+                        />
+                    </div>
+                    <div className="signup-form-panel-box">
+                        <label>Password</label>
+                        <input type="password"
+                            className="input-textbox"
+                            value={this.state.password}
+                            onChange={this.update('password')}
+                            required={true}
+                            minLength="6"
+                        />
+                    </div>
+                    <div className="signup-form-panel-box">
+                        <label>Confirm Password</label>
+                        <input type="password"
+                            className="input-textbox"
+                            value={this.state.password2}
+                            onChange={this.update('password2')}
+                            required={true}
+                            minLength="6"
+                        />
+                    </div>
+                    <input type="submit" value="Submit" className="submit-btn"/>
                     {this.renderErrors()}
                 </div>
             </form>
