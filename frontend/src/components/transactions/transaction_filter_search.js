@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../stylesheets/transaction.css';
 
 class TransactionFilterSearch extends React.Component {
     constructor(props) {
@@ -32,29 +33,44 @@ class TransactionFilterSearch extends React.Component {
 
     render() {
         return(
-            <div>
-                <label>Category:</label>
-                <select 
-                    name="category"
-                    value={this.state.category}
-                    onChange={this.handleChange}
-                >
-                    <option value="All">All</option>
-                    <option value="Salary">Salary</option>
-                    <option value="Food">Food</option>
-                    <option value="Transport">Transport</option>
-                    <option value="House">House</option>
-                    <option value="Other">Other</option>
-                </select>
-                <button onClick={() => this.handleSearch('filter')}>Filter</button>
-                <input
-                    type="textarea"
-                    name="description"
-                    value={this.state.description}
-                    onChange={this.handleChange}
-                    placeholder="Enter transaction description or value"
-                />
-                <button onClick={() => this.handleSearch('search')}>Search</button>
+            <div className="transaction-filter-search-container">
+                <div>
+                    <label> Filter by category: </label>
+                    <select
+                        className="filter-choice"
+                        name="category"
+                        value={this.state.category}
+                        onChange={this.handleChange}
+                    >
+                        <option value="All">All</option>
+                        <option value="Salary">Salary</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="House">House</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <button
+                        className="filter-search-btn"
+                        onClick={() => this.handleSearch('filter')}>
+                        Filter
+                    </button>
+                </div>
+                <div>
+                    <label>Search by: </label>
+                    <input
+                        className="search-choice"
+                        type="textarea"
+                        name="description"
+                        value={this.state.description}
+                        onChange={this.handleChange}
+                        placeholder="description/value"
+                    />
+                    <button
+                        className="filter-search-btn"
+                        onClick={() => this.handleSearch('search')}>
+                        Search
+                    </button>
+                </div>
             </div>
         )
     }
