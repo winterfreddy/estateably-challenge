@@ -24,6 +24,18 @@ export const receiveErrors = errors => ({
     errors
 });
 
+export const updateBalance = data => dispatch => (
+    APIUtil.updateBalance(data)
+        .then(res => {
+            const { token } = res.data;
+            localStorage.setItem('jwtToken', token);
+            APIUtil.setAuthToken(token);
+            const decoded = jwt_decode(token);
+            dispatch(receiveCurrentUser(decoded))
+        })
+        .catch(err => console.log(err))
+)
+
 export const signup = user => dispatch => {
     return APIUtil.signup(user)
         .then((res) => {

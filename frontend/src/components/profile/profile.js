@@ -47,7 +47,11 @@ class Profile extends React.Component {
                         id={this.props.currentUser.id}
                         searchTransactions={this.props.searchTransactions}
                     />
-                    <TransactionCompose addTransaction={this.props.addTransaction}/>
+                    <TransactionCompose
+                        username={this.props.currentUser.username}
+                        addTransaction={this.props.addTransaction}
+                        updateBalance={this.props.updateBalance}
+                    />
                     {this.state.transactions.map(transaction => (
                         <TransactionBox
                             key={transaction._id}

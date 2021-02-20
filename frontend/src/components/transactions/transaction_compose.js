@@ -5,7 +5,7 @@ class TransactionCompose extends React.Component {
     super(props);
 
     this.state = {
-        category: "",
+        category: "Salary",
         description: "",
         value: 0,
         choice: ""
@@ -24,9 +24,17 @@ class TransactionCompose extends React.Component {
         choice: this.state.choice
     };
 
-    this.props.addTransaction(transaction);
+    let balancePackage = {
+        username: this.props.username,
+        value: this.state.value,
+        choice: this.state.choice
+    }
+
+    this.props.addTransaction(transaction)
+        .then(this.props.updateBalance(balancePackage))
+
     this.setState({
-        category: '',
+        category: 'Salary',
         description: '',
         value: 0,
         choice: ''

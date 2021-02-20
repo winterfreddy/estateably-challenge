@@ -21,6 +21,44 @@ router.get('/current',
     }
 )
 
+// updates the user balance
+router.patch('/update', (req, res) => {
+    let value = +(req.body.value);
+    User.findOne({ username: req.body.username })
+        .then(user => {
+            if (req.body.choice === "deposit") {
+                value += user.balance;
+            }
+            else {
+                value = user.balance - value;
+            }
+            User.updateOne(
+                {username: user.username},
+                {balance: value.toFixed(2)},
+                function (err, docs) {
+                    if(err) {
+                        console.log(err);
+                    }
+                    // else {
+                    //     console.log("Updated Balance: ", docs);
+                    // }
+            });
+            const payload = {id: user.id, username: user.username, balance: value.toFixed(2)};
+
+            jwt.sign(
+                payload,
+                keys.secretOrKey,
+                { expiresIn: 3600 },
+                (err, token) => {
+                    res.json({
+                        success: true,
+                        token: 'Bearer ' + token
+                    });
+                }
+            );
+        })
+})
+
 router.post('/register', (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
