@@ -24,6 +24,10 @@ class Profile extends React.Component {
         if (this.state.transactions.length === 0) {
             return (
                 <div>
+                    <div>
+                        <label>Account Summary</label>
+                        <label>Balance: {this.props.currentUser.balance}</label>
+                    </div>
                     <TransactionFilterSearch
                         id={this.props.currentUser.id}
                         searchTransactions={this.props.searchTransactions}
@@ -35,6 +39,10 @@ class Profile extends React.Component {
         } else {
             return (
                 <div>
+                    <div>
+                        <label>Account Summary</label>
+                        <label>Balance: {this.props.currentUser.balance}</label>
+                    </div>
                     <TransactionFilterSearch
                         id={this.props.currentUser.id}
                         searchTransactions={this.props.searchTransactions}
