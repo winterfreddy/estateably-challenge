@@ -52,7 +52,6 @@ class TransactionCompose extends React.Component {
             <form
                 className="transaction-compose-header"
                 onSubmit={this.handleSubmit}>
-                <label className="compose-header-title">Add Transaction</label>
                 <div className="compose-header">
                     <div>
                         <label>Category: </label>

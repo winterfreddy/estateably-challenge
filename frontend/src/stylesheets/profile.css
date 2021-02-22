@@ -34,3 +34,18 @@
 .profile-content {
     margin-top: 5%;
 }
+
+.transaction-title {
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: 600;
+    
+}
+
+.no-transaction-content {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid gray;
+    padding: 10px 0;
+    justify-content: center;
+}

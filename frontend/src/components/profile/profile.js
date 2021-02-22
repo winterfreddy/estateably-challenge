@@ -36,8 +36,20 @@ class Profile extends React.Component {
                         />
                     </div>
                     <div className="profile-content">
-                        <TransactionCompose addTransaction={this.props.addTransaction}/>
-                        <div>There are no transactions</div>
+                        <label className="transaction-title">Add Transaction</label>
+                        <TransactionCompose
+                            username={this.props.currentUser.username}
+                            addTransaction={this.props.addTransaction}
+                            updateBalance={this.props.updateBalance}
+                        />
+                        <label className="transaction-title">Past Transactions</label>
+                        <div className="transaction-header">
+                            <p>Date</p>
+                            <p>Category</p>
+                            <p>Description</p>
+                            <p>Amount</p>
+                        </div>
+                        <div className="no-transaction-content">There are no transactions</div>
                     </div>
                 </div>
             )
@@ -55,11 +67,19 @@ class Profile extends React.Component {
                         />
                     </div>
                     <div className="profile-content">
+                        <label className="transaction-title">Add Transaction</label>
                         <TransactionCompose
                             username={this.props.currentUser.username}
                             addTransaction={this.props.addTransaction}
                             updateBalance={this.props.updateBalance}
                         />
+                        <label className="transaction-title">Past Transactions</label>
+                        <div className="transaction-header">
+                            <p>Date</p>
+                            <p>Category</p>
+                            <p>Description</p>
+                            <p>Amount</p>
+                        </div>
                         {this.state.transactions.map(transaction => (
                             <TransactionBox
                                 key={transaction._id}
