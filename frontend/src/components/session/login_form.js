@@ -56,7 +56,7 @@ class LoginForm extends React.Component {
     return (
       <div className="login-form-container">
         <div className="login-form-content">
-          <p className="login-form-content-title">Estateably Banking</p>
+          <p className="login-form-content-title"><i class="fas fa-university"></i>Estateably Banking</p>
           <p className="login-form-content-text-1">Welcome!</p>
           <p className="login-form-content-text">Please log in</p>
           <div>

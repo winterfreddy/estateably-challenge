@@ -39,3 +39,8 @@
     color: black;
     background-color: white;
 }
+
+h1 > .fa-university {
+    padding: 0 10px;
+    color: rgb(47, 47, 47);
+}

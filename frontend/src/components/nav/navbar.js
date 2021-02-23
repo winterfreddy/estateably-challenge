@@ -36,7 +36,7 @@ class NavBar extends React.Component {
       return (
         <div className="navigation-container">
           <div className="navigation-content">
-            <h1>Estateably Banking</h1>
+            <h1><i class="fas fa-university"></i>Estateably Banking</h1>
             { this.getLinks() }
           </div>
         </div>

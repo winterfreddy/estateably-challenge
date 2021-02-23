@@ -59,7 +59,7 @@ class SignupForm extends React.Component {
         return (
         <div className="signup-form-container">
             <div className="signup-form-content">
-                <p className="signup-form-content-title">Estateably Banking</p>
+                <p className="signup-form-content-title"><i class="fas fa-university"></i>Estateably Banking</p>
                 <p className="signup-form-content-text-1">Welcome!</p>
                 <p className="signup-form-content-text">Please sign up here</p>
                 <div>

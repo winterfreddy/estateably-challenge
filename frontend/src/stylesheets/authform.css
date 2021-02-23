@@ -82,3 +82,9 @@
     border: none;
     border-radius: 3px;
 }
+
+.signup-form-content-title > .fa-university,
+.login-form-content-title > .fa-university {
+    padding: 0 10px 0 0;
+    color: white;
+}
