@@ -60,3 +60,8 @@
 .transaction-content > p:first-child {
     margin-top: 0;
 }
+
+.filter-search-btn:hover,
+.transaction-add-btn:hover {
+    cursor: pointer;
+}

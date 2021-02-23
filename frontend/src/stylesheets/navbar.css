@@ -53,3 +53,10 @@
     font-weight: 600;
     padding: 15px 0;
 }
+
+.signin-btn:hover,
+.login-btn:hover,
+.logout-btn:hover {
+    cursor: pointer;
+    color: #0072db;
+}
