@@ -50,7 +50,7 @@
 }
 
 .login-form-panel {
-    padding: 50.5px 55px;
+    padding: 70px 55px;
 }
 
 .signup-form-panel-box,
@@ -83,12 +83,24 @@
     border-radius: 3px;
 }
 
+.demo-user-btn {
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+    background: none;
+    border: none;
+    margin: 10px 0;
+    padding-left: 0;
+}
+
 .signup-form-content-title > .fa-university,
 .login-form-content-title > .fa-university {
     padding: 0 10px 0 0;
     color: white;
 }
 
-.submit-btn:hover {
+.submit-btn:hover,
+.demo-user-btn:hover {
     cursor: pointer;
 }

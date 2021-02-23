@@ -13,6 +13,7 @@ class LoginForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
   }
 
@@ -42,6 +43,11 @@ class LoginForm extends React.Component {
         .then(this.props.history.push('/profile')); 
   }
 
+  handleDemoLogin(e) {
+    e.persist();
+    this.setState( {username: 'DemoUser', password: '123456' }, () => this.handleSubmit(e));
+  }
+
   renderErrors() {
     return(
       <ul>
@@ -62,6 +68,7 @@ class LoginForm extends React.Component {
           <div>
               <label className="login-form-content-text-1">New user? </label><Link className="redirect-link" to={'/signup'}>Sign up here</Link>
           </div>
+          <button className="demo-user-btn" onClick={this.handleDemoLogin}>Sign in as demo user</button>
         </div>
         <form onSubmit={this.handleSubmit}>
           <div className="login-form-panel">
