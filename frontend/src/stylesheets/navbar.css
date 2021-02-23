@@ -40,7 +40,16 @@
     background-color: white;
 }
 
-h1 > .fa-university {
+.logo > .fa-university {
     padding: 0 10px;
     color: rgb(47, 47, 47);
+    font-size: 40px;
+}
+
+.logo {
+    font-size: 35px;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    padding: 15px 0;
 }
