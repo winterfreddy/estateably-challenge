@@ -72,7 +72,7 @@ router.post('/',
                 accountId: req.user.id,
                 category: req.body.category,
                 description: req.body.description,
-                value: req.body.value,
+                value: (+(req.body.value)).toFixed(2),
                 choice: req.body.choice
             });
 

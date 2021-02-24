@@ -6,6 +6,7 @@ class TransactionBox extends React.Component {
 
     let finalDate = this.props.date.slice(0,10);
     let finalValue = this.props.choice === "deposit" ? "+ $" + this.props.value : "- $" + this.props.value;
+    // let finalValue = this.props.choice === "deposit" ? "+ $" + (this.props.value).toFixed(2) : "- $" + (this.props.value).toFixed(2);
 
     return (
         <div className="transaction-content">

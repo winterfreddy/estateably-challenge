@@ -18,6 +18,27 @@ class TransactionCompose extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    
+    let estimatedBalance = +(this.props.balance);
+    let num = +((+(this.state.value)).toFixed(2));
+    let message = "";
+    
+    if(this.state.choice === "withdraw") {
+        message += ". Are you sure you want to withdraw $" + num + "?";
+        estimatedBalance = (estimatedBalance - num).toFixed(2);
+    }
+    else {
+        message += ". Are you sure you want to deposit $" + num + "?";
+        estimatedBalance = (estimatedBalance + num).toFixed(2);
+    }
+    
+    if(estimatedBalance < 0) {
+        message = "Your new balance will be -$" + (-1 * +(estimatedBalance)).toString() + message;
+    }
+    else {
+        message = "Your new balance will be $" + estimatedBalance + message;
+    }
+    
     let transaction = {
         category: this.state.category,
         description: this.state.description,
@@ -31,15 +52,17 @@ class TransactionCompose extends React.Component {
         choice: this.state.choice
     }
 
-    this.props.addTransaction(transaction)
-        .then(this.props.updateBalance(balancePackage))
-
-    this.setState({
-        category: 'Salary',
-        description: '',
-        value: 0,
-        choice: ''
-    })
+    if (window.confirm(message)) {
+        this.props.addTransaction(transaction)
+            .then(this.props.updateBalance(balancePackage))
+    
+        this.setState({
+            category: 'Salary',
+            description: '',
+            value: 0,
+            choice: ''
+        })
+    }
   }
 
   handleChange(e) {

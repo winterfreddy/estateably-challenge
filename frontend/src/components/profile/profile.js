@@ -60,6 +60,7 @@ class Profile extends React.Component {
                             username={this.props.currentUser.username}
                             addTransaction={this.props.addTransaction}
                             updateBalance={this.props.updateBalance}
+                            balance={this.props.currentUser.balance}
                         />
                         <label className="transaction-title">Past Transactions</label>
                         <div className="transaction-header">
@@ -88,6 +89,7 @@ class Profile extends React.Component {
                             username={this.props.currentUser.username}
                             addTransaction={this.props.addTransaction}
                             updateBalance={this.props.updateBalance}
+                            balance={this.props.currentUser.balance}
                         />
                         <label className="transaction-title">Past Transactions</label>
                         <div className="transaction-header">
