@@ -100,6 +100,7 @@ class TransactionCompose extends React.Component {
                             value={this.state.description}
                             onChange={this.handleChange}
                             placeholder="Transaction description"
+                            required
                         />
                     </div>
                 </div>
@@ -132,7 +133,9 @@ class TransactionCompose extends React.Component {
                             type="text"
                             name="value"
                             value={this.state.value}
-                            onChange={this.handleChange}/>
+                            onChange={this.handleChange}
+                            required
+                        />
                         <input className="transaction-add-btn" type="submit" value="Submit" />
                     </div>
                 </div>

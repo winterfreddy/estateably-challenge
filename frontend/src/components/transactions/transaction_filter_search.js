@@ -55,7 +55,7 @@ class TransactionFilterSearch extends React.Component {
                         Filter
                     </button>
                 </div>
-                <div>
+                <form>
                     <label>Search by: </label>
                     <input
                         className="search-choice"
@@ -64,13 +64,14 @@ class TransactionFilterSearch extends React.Component {
                         value={this.state.description}
                         onChange={this.handleChange}
                         placeholder="description/value"
+                        required
                     />
                     <button
                         className="filter-search-btn"
                         onClick={() => this.handleSearch('search')}>
                         Search
                     </button>
-                </div>
+                </form>
             </div>
         )
     }
