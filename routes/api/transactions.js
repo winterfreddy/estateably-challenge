@@ -5,8 +5,6 @@ const passport = require('passport');
 const Transaction = require('../../models/Transaction');
 const validateTransactionInput = require('../../validation/transaction');
 
-router.get("/test", (req, res) => res.json({ msg: "This is the transactions route" }));
-
 // grab all transactions belonging to that user
 router.get('/user/:accountId', (req, res) => {
     Transaction.find({accountId: req.params.accountId})
