@@ -17,10 +17,9 @@ class SignupForm extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.signedIn === true) {
+        if (!nextProps.errors) {
             this.props.history.push('/login');
         }
-
         this.setState({errors: nextProps.errors})
     }
 
@@ -39,7 +38,6 @@ class SignupForm extends React.Component {
         };
 
         this.props.signup(user, this.props.history)
-            .then(() => this.props.history.push('/profile'));; 
     }
 
     renderErrors() {
