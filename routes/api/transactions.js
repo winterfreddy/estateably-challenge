@@ -50,7 +50,7 @@ router.get('/user/:accountId/:description', (req, res) => {
     }
     // and checks for any matching description
     else {
-        Transaction.find({accountId: req.params.accountId, description: req.params.description})
+        Transaction.find({accountId: req.params.accountId, description: { $regex: req.params.description, $options: 'i'}})
             .then(transactions => res.json(transactions))
             .catch(err =>
                 res.status(404).json({ notransactionsfound: `No transactions matching ${req.params.description} found from that user` }
