@@ -4,17 +4,21 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 15%;
+    margin: 15%;
 }
 
 .signup-form-content,
 .login-form-content {
     display: flex;
     flex-direction: column;
-    padding: 84px 50px;
+    justify-content: center;
     background-color: #0072db;
     color: white;
     border-radius: 5px 0 0 5px;
+    height: 40vh;
+    width: 40vh;
+    padding: 0 2% 0 5%;
+    border: 1px solid #0072db;
 }
 
 .signup-form-content-title,
@@ -42,15 +46,16 @@
 
 .signup-form-panel,
 .login-form-panel {
-    padding: 21.5px 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-top: 1px solid gray;
     border-right: 1px solid gray;
     border-bottom: 1px solid gray;
     border-radius: 0 5px 5px 0;
-}
-
-.login-form-panel {
-    padding: 70px 55px;
+    height: 40vh;
+    width: 45vh;
 }
 
 .signup-form-panel-box,
