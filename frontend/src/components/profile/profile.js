@@ -11,6 +11,8 @@ class Profile extends React.Component {
         this.state = {
             transactions: []
         }
+
+        this.getAccountSummary = this.getAccountSummary.bind(this);
     }
     
     componentWillMount() {
@@ -19,17 +21,34 @@ class Profile extends React.Component {
 
     componentWillReceiveProps(newState) {
         this.setState({ transactions: newState.transactions });
-    }   
+    }
+    
+    getAccountSummary() {
+        let balance = this.props.currentUser.balance * -1;
+        if(this.props.currentUser.balance > 0) {
+            return (
+                <div className="profile-summary">
+                    <label>Account Summary</label>
+                    <label>Balance: ${this.props.currentUser.balance}</label>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div className="profile-summary">
+                    <label>Account Summary</label>
+                    <label>Balance: <label className="negative-bal">- ${balance}</label></label>
+                </div>
+            )
+        }
+    }
     
     render() {
         if (this.state.transactions.length === 0) {
             return (
                 <div className="profile-component">
                     <div className="profile-header">
-                        <div className="profile-summary">
-                            <label>Account Summary</label>
-                            <label>Balance: ${this.props.currentUser.balance}</label>
-                        </div>
+                        {this.getAccountSummary()}
                         <TransactionFilterSearch
                             id={this.props.currentUser.id}
                             searchTransactions={this.props.searchTransactions}
@@ -57,10 +76,7 @@ class Profile extends React.Component {
             return (
                 <div className="profile-component">
                     <div className="profile-header">
-                        <div className="profile-summary">
-                            <label>Account Summary</label>
-                            <label>Balance: ${this.props.currentUser.balance}</label>
-                        </div>
+                        {this.getAccountSummary()}
                         <TransactionFilterSearch
                             id={this.props.currentUser.id}
                             searchTransactions={this.props.searchTransactions}
