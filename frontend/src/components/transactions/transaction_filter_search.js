@@ -64,7 +64,6 @@ class TransactionFilterSearch extends React.Component {
                         value={this.state.description}
                         onChange={this.handleChange}
                         placeholder="description/value"
-                        required
                     />
                     <button
                         className="filter-search-btn"
