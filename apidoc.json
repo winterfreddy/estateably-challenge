@@ -1,0 +1,8 @@
+{
+    "name": "Estateably Banking API documentation",
+    "version": "1.0.0",
+    "description": "API bank account manager",
+    "template": {
+        "forceLanguage": "en"
+    }
+}

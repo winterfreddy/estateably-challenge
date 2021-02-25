@@ -9,6 +9,24 @@ const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
+/**
+ * @api {get} /current Get current user
+ * @apiGroup Users
+ * @apiParam {String} Authorization Authorization token
+ * @apiParamExample {string} Input
+ *  "Authorization": "Bearer eyJhbG...UjrtSY"
+ * @apiSuccess {String} user.id User id
+ * @apiSuccess {String} user.username User's username
+ * @apiSuccessExample {json} Success
+ *  HTTP/1.1 200 OK
+ *  [{
+ *      "id": "602da8a866358b1622da0647",
+ *      "username": "DemoUser"
+ *  }]
+ * @apiErrorExample {String} Unauthorized access
+ *  HTTP/1.1 401 Unauthorized
+ *  "Unauthorized"
+ */
 router.get('/current',
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
@@ -19,7 +37,27 @@ router.get('/current',
     }
 )
 
-// updates the user balance
+/**
+ * @api {patch} /update Update user's balance
+ * @apiGroup Users
+ * @apiParam {String} username Current user's username
+ * @apiParam {String} value Value to be added
+ * @apiParam {String} choice Transaction type either deposit or withdraw
+ * @apiParamExample {json} Input
+ * {
+ *      "username": "DemoUser",
+ *      "value": "1250",
+ *      "choice": "deposit"
+ * }
+ * @apiSuccess {Boolean} user.success Is user logged in still?
+ * @apiSuccess {String} user.token User's auth token
+ * @apiSuccessExample {json} Success
+ *  HTTP/1.1 200 OK
+ *  [{
+ *      "success": true,
+ *      "token" : "Bearer eyJhbG...UjrtSY"
+ *  }]
+ */
 router.patch('/update', (req, res) => {
     let value = +(req.body.value);
     User.findOne({ username: req.body.username })
@@ -57,6 +95,50 @@ router.patch('/update', (req, res) => {
         })
 })
 
+/**
+ * @api {post} /register Register new user
+ * @apiGroup Users
+ * @apiParam {String} username New username
+ * @apiParam {String} password New password
+ * @apiParam {String} password2 New password confirmation
+ * @apiParamExample {json} Input
+ * {
+ *      "username": "DemoUser",
+ *      "password": "123456",
+ *      "password2": "123456"
+ * }
+ * @apiSuccess {Boolean} user.success Is user logged in after signup?
+ * @apiSuccess {String} user.token User's auth token
+ * @apiSuccessExample {json} Success
+ *  HTTP/1.1 200 OK
+ *  [{
+ *      "success": true,
+ *      "token" : "Bearer eyJhbG...UjrtSY"
+ *  }]
+ * @apiErrorExample {json} All text fields empty
+ *  HTTP/1.1 400 Bad Request
+ * [{
+ *      "username": "Username field is required",
+ *      "password": "Password must be at least 6 characters",
+ *      "password2": "Confirm Password field is required"
+ * }]
+ * @apiErrorExample {json} Password fields empty
+ *  HTTP/1.1 400 Bad Request
+ * [{
+ *      "password": "Password must be at least 6 characters",
+ *      "password2": "Confirm Password field is required"
+ * }]
+ * @apiErrorExample {json} Mismatched passwords
+ *  HTTP/1.1 400 Bad Request
+ * [{
+ *      "password2": "Passwords must match"
+ * }]
+ * @apiErrorExample {json} Existing user
+ *  HTTP/1.1 400 Bad Request
+ * [{
+ *      "username": "A user has already registered with this username"
+ * }]
+ */
 router.post('/register', (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
@@ -105,6 +187,41 @@ router.post('/register', (req, res) => {
     })
 })
 
+/**
+ * @api {post} /login Log user in
+ * @apiGroup Users
+ * @apiParam {String} username Existing username
+ * @apiParam {String} password Existing password
+ * @apiParamExample {json} Input
+ * {
+ *      "username": "DemoUser",
+ *      "password": "123456"
+ * }
+ * @apiSuccess {Boolean} user.success Is user logged in after login?
+ * @apiSuccess {String} user.token User's auth token
+ * @apiSuccessExample {json} Success
+ *  HTTP/1.1 200 OK
+ *  [{
+ *      "success": true,
+ *      "token" : "Bearer eyJhbG...UjrtSY"
+ *  }]
+ * @apiErrorExample {json} All text fields empty
+ *  HTTP/1.1 400 Bad Request
+ * [{
+ *      "username": "Username field is required",
+ *      "password": "Password field is required"
+ * }]
+ * @apiErrorExample {json} Password field empty
+ *  HTTP/1.1 400 Bad Request
+ * [{
+ *      "password": "Password field is required"
+ * }]
+ * @apiErrorExample {json} Wrong password
+ *  HTTP/1.1 400 Bad Request
+ * [{
+ *      "password": "Incorrect password"
+ * }]
+ */
 router.post('/login', (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
 
