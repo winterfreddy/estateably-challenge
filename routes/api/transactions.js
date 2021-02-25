@@ -6,7 +6,8 @@ const Transaction = require('../../models/Transaction');
 const validateTransactionInput = require('../../validation/transaction');
 
 /**
- * @api {get} /user/:accountId Get all of current user's transactions
+ * @api {get} /api/transactions/user/:accountId Get all of current user's transactions
+ * @apiVersion 1.1.0
  * @apiGroup Transactions
  * @apiParam {String} accountId Current user's accountId
  * @apiParamExample {json} Input
@@ -47,7 +48,8 @@ router.get('/user/:accountId', (req, res) => {
 });
 
 /**
- * @api {get} /user/:accountId/:description Get all of current user's transactions matching description, category, or value
+ * @api {get} /api/transactions/user/:accountId/:description Get all of current user's transactions matching description, category, or value
+ * @apiVersion 1.1.0
  * @apiGroup Transactions
  * @apiParam {String} accountId Current user's accountId
  * @apiParam {String} description Transaction description, category, or value
@@ -122,7 +124,8 @@ router.get('/user/:accountId/:description', (req, res) => {
 });
 
 /**
- * @api {post} / Add a new transaction
+ * @api {post} /api/transactions/ Add a new transaction
+ * @apiVersion 1.1.0
  * @apiGroup Transactions
  * @apiParam {String} id Current user's accountId
  * @apiParam {String} category Transaction category

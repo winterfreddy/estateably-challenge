@@ -10,7 +10,8 @@ const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
 /**
- * @api {get} /current Get current user
+ * @api {get} /api/users/current Get current user
+ * @apiVersion 1.1.0
  * @apiGroup Users
  * @apiParam {String} Authorization Authorization token
  * @apiParamExample {string} Input
@@ -38,7 +39,8 @@ router.get('/current',
 )
 
 /**
- * @api {patch} /update Update user's balance
+ * @api {patch} /api/users/update Update user's balance
+ * @apiVersion 1.1.0
  * @apiGroup Users
  * @apiParam {String} username Current user's username
  * @apiParam {String} value Value to be added
@@ -96,7 +98,8 @@ router.patch('/update', (req, res) => {
 })
 
 /**
- * @api {post} /register Register new user
+ * @api {post} /api/users/register Register new user
+ * @apiVersion 1.1.0
  * @apiGroup Users
  * @apiParam {String} username New username
  * @apiParam {String} password New password
@@ -188,7 +191,8 @@ router.post('/register', (req, res) => {
 })
 
 /**
- * @api {post} /login Log user in
+ * @api {post} /api/users/login Log user in
+ * @apiVersion 1.1.0
  * @apiGroup Users
  * @apiParam {String} username Existing username
  * @apiParam {String} password Existing password
