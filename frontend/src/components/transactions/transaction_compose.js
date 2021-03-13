@@ -9,7 +9,7 @@ class TransactionCompose extends React.Component {
         category: "Salary",
         description: "",
         value: 0,
-        choice: ""
+        choice: "deposit"
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -60,7 +60,7 @@ class TransactionCompose extends React.Component {
             category: 'Salary',
             description: '',
             value: 0,
-            choice: ''
+            choice: 'deposit'
         })
     }
   }
